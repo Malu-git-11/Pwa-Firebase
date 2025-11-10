@@ -6,16 +6,30 @@
   <meta name="viewport" content="width=device-width,initial-scale=1" />
   <title>Perfil - PWA Firebase</title>
   <link rel="manifest" href="/manifest.json" />
-  <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="profile.css" />
   <script type="module" src="/js/profile.js" defer></script>
+
 </head>
 
 <body>
-  <main class="container">
-    <h1>Perfil</h1>
-    <div id="userInfo"></div>
-    <button id="logoutBtn">Sair</button>
-  </main>
+  <aside class="menu">
+    <h2>Menu</h2>
+    <a href="#"><i class="fas fa-user"></i> Minha Conta</a>
+    <a href="#"><i class="fas fa-star"></i> Favoritos</a>
+    <a href="#"><i class="fas fa-film"></i> Minhas Séries</a>
+    <a href="#"><i class="fas fa-history"></i> Histórico</a>
+    <a href="#"><i class="fas fa-cog"></i> Configurações</a>
+    <a href="#"><i class="fas fa-sign-out-alt"></i> Sair</a>
+  </aside>
+
+  <div class="container">
+    <img src="https://static.vecteezy.com/system/resources/previews/018/765/757/non_2x/user-profile-icon-in-flat-style-member-avatar-illustration-on-isolated-background-human-permission-sign-business-concept-vector.jpg" alt="Foto de perfil" class="profile-pic">
+    <h1 class="username">Malu</h1>
+  </div>
+
+  <footer>
+    Assinante desde 2025 • Plano Premium
+  </footer>
 </body>
 
 </html>
