@@ -1,12 +1,11 @@
 const CACHE_NAME = 'pwa-firebase-v1';
 const FILES_TO_CACHE = [
   '/index.html',
-  '/login.html',
-  '/register.html',
   '/profile.html',
-  '/css/style.css',
-  '/js/app.js',
-  '/js/authService.js',
+  '/style.css',
+  'profile.css',
+  '/app.js',
+  '/authService.js',
   '/manifest.json'
 ];
 
