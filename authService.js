@@ -1,20 +1,25 @@
-import {getAuth, criarUsuarioComEmailESenha} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
+import { 
+    getAuth, 
+    createUserWithEmailAndPassword 
+} from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
 class FirebaseAuthService {
     #auth;
+
     constructor(app){
         this.#auth = getAuth(app);
     }
 
-    criarUsuarioComEmailESenha(email,senha){
-        criarUsuarioComEmailESenha(this.#auth, email, senha)
-            .then((credencialdoUsuario) => {
-                console.log('Usuario criado com sucesso: ', credencialdoUsuario.user);
-                window.location.href = `profile.html?email=${encodeURIComponent(email)}`;
-      })
-        .catch((erro) => {
-            console.error("Erro ao criar o usuario: ", erro)
-        }) 
+    criarUsuarioComEmailESenha(email, senha){
+        return createUserWithEmailAndPassword(this.#auth, email, senha)
+            .then((credencial) => {
+                console.log("Usuário criado:", credencial.user);
+                return { sucesso: true, usuario: credencial.user };
+            })
+            .catch((erro) => {
+                console.error("Erro ao criar usuário:", erro);
+                return { sucesso: false, erro };
+            });
     }
 }
 

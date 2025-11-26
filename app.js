@@ -1,12 +1,7 @@
-// Import the functions you need from the SDKs you need
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-app.js";
 import { getAnalytics } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-analytics.js";
-import FireBaseAuthService from './authService.js';
-// TODO: Add SDKs for Firebase products that you want to use
-// https://firebase.google.com/docs/web/setup#available-libraries
+import FirebaseAuthService from "./authService.js";
 
-// Your web app's Firebase configuration
-// For Firebase JS SDK v7.20.0 and later, measurementId is optional
 const firebaseConfig = {
   apiKey: "AIzaSyAQfLHIjFd6nmfUCsBD11s3n_9ZBK5AF-w",
   authDomain: "pwa-pam.firebaseapp.com",
@@ -17,19 +12,24 @@ const firebaseConfig = {
   measurementId: "G-7LPERFZPGM"
 };
 
-// Initialize Firebase
-window.fbApp = initializeApp(firebaseConfig);
-window.analytics = getAnalytics(window.fbApp);
-console.log(window.fbApp);
+// Inicializar Firebase
+const fbApp = initializeApp(firebaseConfig);
+getAnalytics(fbApp);
 
+const authService = new FirebaseAuthService(fbApp);
 
-const FirebaseAuthService = new FireBaseAuthService(window.fbApp);
-FirebaseAuthService.criarUsuarioComEmailESenha(email, senha);
-//se o login ocorrer de forma correta ira levar o usuario a pagina de perfil
-if (FirebaseAuthService.criarUsuarioComEmailESenha(email, senha) = erro) {
-  console.log("Erro")
-} else {
-  document.getElementById("Enviar").addEventListener("click", () => {
-    window.location.href = "profile.html"
-  })
-}
+// Captura do formulário
+document.getElementById("cadastroForm").addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const senha = document.getElementById("senha").value;
+
+  const resultado = await authService.criarUsuarioComEmailESenha(email, senha);
+
+  if (resultado.sucesso) {
+    window.location.href = `profile.html?email=${encodeURIComponent(email)}`;
+  } else {
+    alert("Erro ao cadastrar usuário: " + resultado.erro.message);
+  }
+});
