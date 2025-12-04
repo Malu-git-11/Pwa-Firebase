@@ -1,12 +1,14 @@
 const CACHE_NAME = 'pwa-firebase-v1';
+const BASE_PATH = '/PwaFirebase'; // <- caminho do repositório
+
 const FILES_TO_CACHE = [
-  '/index.html',
-  '/profile.html',
-  '/style.css',
-  'profile.css',
-  '/app.js',
-  '/authService.js',
-  '/manifest.json'
+  `${BASE_PATH}/index.html`,
+  `${BASE_PATH}/profile.html`,
+  `${BASE_PATH}/style.css`,
+  `${BASE_PATH}/profile.css`,
+  `${BASE_PATH}/app.js`,
+  `${BASE_PATH}/authService.js`,
+  `${BASE_PATH}/manifest.json`
 ];
 
 self.addEventListener('install', (evt) => {
