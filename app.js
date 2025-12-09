@@ -66,7 +66,7 @@ if (logoutBtn) {
   logoutBtn.addEventListener("click", async () => {
     try {
       await authService.logout();
-      window.location.href = "index.html";
+      window.location.href = `index.html`;
     } catch (erro) {
       alert("Erro ao sair: " + erro.message);
     }
