@@ -1,7 +1,8 @@
 import { 
     getAuth, 
     createUserWithEmailAndPassword,
-    signInWithEmailAndPassword
+    signInWithEmailAndPassword,
+    signOut
 } from "https://www.gstatic.com/firebasejs/12.5.0/firebase-auth.js";
 
 class FirebaseAuthService {
@@ -33,6 +34,19 @@ class FirebaseAuthService {
             })
             .catch((erro) => {
                 console.error("Erro ao fazer login:", erro);
+                return { sucesso: false, erro };
+            });
+    }
+
+    // Fazer logout
+    logout() {
+        return signOut(this.#auth)
+            .then(() => {
+                console.log("Usuário saiu.");
+                return { sucesso: true };
+            })
+            .catch((erro) => {
+                console.error("Erro ao fazer logout:", erro);
                 return { sucesso: false, erro };
             });
     }
