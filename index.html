@@ -1,38 +1,41 @@
 <!doctype html>
-<html lang="en">
+<html lang="pt-BR">
 
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>PWA Firebase Auth - Home</title>
+  <title>Login</title>
   <link rel="manifest" href="manifest.json" />
   <link rel="stylesheet" href="/PwaFirebase/style.css" />
   <script type="module" src="/PwaFirebase/app.js"></script>
-  <script type="module">
-  </script>
+  <script type="module" src="/PwaFirebase/appAuth.js"></script>
 </head>
 
 <body>
   <main class="container">
-    <h1>Bem-vindo</h1>
-    <p>Aplicação PWA com autenticação Firebase</p>
+    <h1>Entrar</h1>
+    <p>Faça login para continuar</p>
 
-    <div class="links">
-      <h1>Cadastro</h1>
-      <form id="cadastroForm">
-        <label>Email: <br>
-          <input type="email" name="email" id="email">
-        </label> <br><br>
+    <form id="loginForm">
+      <label>Email: <br>
+        <input type="email" id="email" required>
+      </label><br><br>
 
-        <label>Senha: <br>
-          <input type="password" name="senha" id="senha">
-        </label> <br><br>
+      <label>Senha: <br>
+        <input type="password" id="senha" required>
+      </label><br><br>
 
-        <label>
-          <input type="submit" value="Enviar" id="Enviar">
-        </label>
+      <label>
+        <input type="submit" value="Entrar" id="loginBtn">
+      </label>
+    </form>
+
+    <div style="margin-top: 25px; font-size: 0.95rem;">
+      Ainda não tem uma conta?
+      <a href="cadastro.html" style="color:#0f5b99; font-weight:600; text-decoration:none;">
+        Criar conta
+      </a>
     </div>
-
   </main>
 </body>
 
